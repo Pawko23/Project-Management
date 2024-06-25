@@ -1,0 +1,10 @@
+.main-box {
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .icon {
+        font-size: 50px;
+    }
+}
