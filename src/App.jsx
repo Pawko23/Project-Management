@@ -1,9 +1,15 @@
+import { useState } from 'react';
+
 import Navbar from './components/Navbar'
 import Main from './components/Main'
 
 import { faListCheck } from "@fortawesome/free-solid-svg-icons";
+import ProjectInput from './components/ProjectInput';
 
 function App() {
+
+  const [isCreatingProject, setIsCreatingProject] = useState(false);
+
   return (
     <>
       <main>
@@ -11,7 +17,11 @@ function App() {
           <Navbar />
         </section>
         <section className='home-container'>
-          <Main icon={faListCheck}/>
+          {isCreatingProject ? (
+            <ProjectInput /> 
+          ) : (
+            <Main icon={faListCheck} onCreateProject={() => setIsCreatingProject(true)}/>
+          )}
         </section>
       </main>
     </>

@@ -39,4 +39,5 @@ main {
   align-items: center;
   text-align: center;
   width: 80%;
+  overflow: hidden;
 }
