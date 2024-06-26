@@ -18,7 +18,7 @@ function App() {
         </section>
         <section className='home-container'>
           {isCreatingProject ? (
-            <ProjectInput /> 
+            <ProjectInput onCloseProject={() => setIsCreatingProject(false)}/> 
           ) : (
             <Main icon={faListCheck} onCreateProject={() => setIsCreatingProject(true)}/>
           )}

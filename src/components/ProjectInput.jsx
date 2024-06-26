@@ -1,6 +1,6 @@
 import classes from '../css/ProjectInput.module.css'
 
-export default function ProjectInput() {
+export default function ProjectInput( { onCloseProject } ) {
     return(
         <div className={classes['input-container']}>
             <form>
@@ -20,7 +20,7 @@ export default function ProjectInput() {
                 
                     <div className={classes['input-buttons']}>
                         <button type="submit" className={classes['save-btn']}>Save</button>
-                        <button type="button" className={classes['cancel-btn']}>Cancel</button>
+                        <button type="button" className={classes['cancel-btn']} onClick={onCloseProject}>Cancel</button>
                     </div>
                 </div>
             </form>
