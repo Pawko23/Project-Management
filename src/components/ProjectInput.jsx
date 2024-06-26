@@ -33,7 +33,7 @@ export default function ProjectInput( { addNewProject, onCloseProject } ) {
                 </div>
 
                 <div className={classes['input-box']}>
-                    <label htmlFor="date-input">Date</label>
+                    <label htmlFor="date-input">Due Date</label>
                     <input type="date" ref={dateRef} id="date-input" className={classes['date-input']} required/>
                 
                     <div className={classes['input-buttons']}>
