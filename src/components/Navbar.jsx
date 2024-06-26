@@ -1,12 +1,21 @@
 import classes from '../css/Navbar.module.css'
 
-export default function Navbar( { projects } ) {
+export default function Navbar( { projects, projectsExist } ) {
+    
+    console.log(projectsExist)
+    console.log(projects)
+    
     return (
         <>
             <nav className={classes.navbar}>
                 <h3 className={classes.header}>Your Projects:</h3>
-                <ul>
-                </ul>
+                {projectsExist && (
+                    <ul>
+                        {projects.map((project) => (
+                            <li key={project.title}>{project.title}</li>
+                        ))}
+                    </ul>
+                )}
             </nav>
         </>
     );
