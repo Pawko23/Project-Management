@@ -48,7 +48,7 @@ function App() {
           {isCreatingProject ? (
             <ProjectInput addNewProject={addNewProject} onCloseProject={() => setIsCreatingProject(false)} />
           ) : isProjectSelected && isProjectSelectedValid(selectedProject) ? (
-            <SelectedProject project={selectedProject} />
+            <SelectedProject project={selectedProject} onBackBtn={() => setIsProjectSelected(false)}/>
           ) : (
             <Main icon={faListCheck} onCreateProject={() => setIsCreatingProject(true)} />
           )}

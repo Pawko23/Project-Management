@@ -1,8 +1,10 @@
 import classes from '../css/SelectedProject.module.css'
+import BackButton from './BackButton';
 
-export default function SelectedProject( { project } ) {
+export default function SelectedProject( { project, onBackBtn } ) {
     return (
         <>
+            <BackButton onClick={onBackBtn}/>
             <div className={classes['content-container']}>
                 <div className={classes.header}>
                     <h1>{project.title} TITLE</h1>
