@@ -5,12 +5,12 @@ export default function SelectedProject( { project } ) {
         <>
             <div className={classes['content-container']}>
                 <div className={classes.header}>
-                    <h1>{project.title}</h1>
+                    <h1>{project.title} TITLE</h1>
                     <button>Delete</button>
                 </div>
                 <div className={classes['project-details']}>
-                    <p>{project.date}</p>
-                    <p>{project.description}</p>
+                    <p>{project.date} DATE</p>
+                    <p>{project.description} DESCR</p>
                 </div>
                 <hr></hr>
                 <div className={classes['tasks-container']}>

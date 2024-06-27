@@ -1,6 +1,6 @@
 import classes from '../css/Navbar.module.css'
 
-export default function Navbar( { projects, projectsExist } ) {
+export default function Navbar( { projects, projectsExist, onProjectSelect } ) {
     
     console.log(projectsExist)
     console.log(projects)
@@ -12,7 +12,7 @@ export default function Navbar( { projects, projectsExist } ) {
                 {projectsExist && (
                     <ul>
                         {projects.map((project) => (
-                            <li key={project.title}>{project.title}</li>
+                            <li key={project.title} onClick={() => onProjectSelect(project)}>{project.title}</li>
                         ))}
                     </ul>
                 )}
