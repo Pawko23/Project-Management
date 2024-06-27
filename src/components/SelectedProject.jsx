@@ -1,7 +1,22 @@
+import { useState } from 'react';
+
 import classes from '../css/SelectedProject.module.css'
 import BackButton from './BackButton';
 
 export default function SelectedProject({ project, onBackBtn }) {
+
+    const [tasks, setTasks] = useState([])
+    const existingTasks = tasks.length > 0;
+
+    const addTask = () => {
+        const newTask = {
+            taskName: '',
+            priority: '',
+            status: ''
+        }
+    }
+
+
     return (
         <>
             <BackButton onClick={onBackBtn} />
@@ -17,13 +32,24 @@ export default function SelectedProject({ project, onBackBtn }) {
                     </div>
                     <hr></hr>
                     <div className={classes['tasks-container']}>
+                        <h3>Tasks</h3>
                         <div className={classes['add-box']}>
-                            <h3>Tasks</h3>
                             <div className={classes['task-input']}>
-                                <input type="text"></input>
-                                <button>Add Task</button>
+                                <div className={classes['input-box']}>
+                                    <label htmlFor='task-name'>Task name</label>
+                                    <input type="text" id='task-name'></input>
+                                </div>
+                                <div className={classes['input-box']}>
+                                    <label htmlFor='task-priority'>Task priority</label>
+                                    <input type="text" id='task-priority'></input>
+                                </div>
+                                <div className={classes['input-box']}>
+                                    <label htmlFor='task-status'>Task status</label>
+                                    <input type="text" id='task-status'></input>
+                                </div>
+                                <button>Add task</button>
                             </div>
-                            <p>This project does not have any tasks yet.</p>
+                            {!existingTasks && <p>This project does not have any tasks yet.</p>}
                         </div>
                     </div>
                 </div>
