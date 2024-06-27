@@ -1,9 +1,9 @@
 import { useState } from 'react';
-
 import classes from '../css/SelectedProject.module.css'
 import BackButton from './BackButton';
 import TaskForm from './TaskForm';
 import TaskModal from './TaskModal';
+import TasksList from './TasksList';
 
 export default function SelectedProject({ project, onBackBtn }) {
 
@@ -43,9 +43,22 @@ export default function SelectedProject({ project, onBackBtn }) {
                     <div className={classes['tasks-container']}>
                         <button onClick={openModal}>Add Task</button>
                         <TaskModal isOpen={isModalOpen}>
-                            <TaskForm addTask={addTask} onClose={closeModal}/>
+                            <TaskForm addTask={addTask} onClose={closeModal} />
                         </TaskModal>
-                        {/* <TaskForm addTask={addTask}/> */}
+                        <div className={classes['lists-container']}>
+                            <div className={classes['todo-list']}>
+                                <h3>To-Do</h3>
+                                <TasksList tasks={tasks} status='To-Do' />
+                            </div>
+                            <div className={classes['inprogress-list']}>
+                                <h3>In-Progress</h3>
+                                <TasksList tasks={tasks} status='In-Progress' />
+                            </div>
+                            <div className={classes['done-list']}>
+                                <h3>Done</h3>
+                                <TasksList tasks={tasks} status='Done' />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -36,6 +36,18 @@
         }
     
         .tasks-container {
+            .lists-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .todo-list, .inprogress-list, .done-list {
+                    margin: 15px;
+                    border: 1px solid #333;
+                    width: 400px;
+                    height: auto;
+                }
+            }
         }    
     }
 }
