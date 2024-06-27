@@ -2,20 +2,29 @@ import { useState } from 'react';
 
 import classes from '../css/SelectedProject.module.css'
 import BackButton from './BackButton';
+import TaskForm from './TaskForm';
+import TaskModal from './TaskModal';
 
 export default function SelectedProject({ project, onBackBtn }) {
 
     const [tasks, setTasks] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const existingTasks = tasks.length > 0;
 
-    const addTask = () => {
-        const newTask = {
-            taskName: '',
-            priority: '',
-            status: ''
-        }
+    const addTask = (task) => {
+        setTasks([...tasks, task])
+        setIsModalOpen(false);
     }
 
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
+
+    console.log(tasks)
 
     return (
         <>
@@ -32,25 +41,11 @@ export default function SelectedProject({ project, onBackBtn }) {
                     </div>
                     <hr></hr>
                     <div className={classes['tasks-container']}>
-                        <h3>Tasks</h3>
-                        <div className={classes['add-box']}>
-                            <div className={classes['task-input']}>
-                                <div className={classes['input-box']}>
-                                    <label htmlFor='task-name'>Task name</label>
-                                    <input type="text" id='task-name'></input>
-                                </div>
-                                <div className={classes['input-box']}>
-                                    <label htmlFor='task-priority'>Task priority</label>
-                                    <input type="text" id='task-priority'></input>
-                                </div>
-                                <div className={classes['input-box']}>
-                                    <label htmlFor='task-status'>Task status</label>
-                                    <input type="text" id='task-status'></input>
-                                </div>
-                                <button>Add task</button>
-                            </div>
-                            {!existingTasks && <p>This project does not have any tasks yet.</p>}
-                        </div>
+                        <button onClick={openModal}>Add Task</button>
+                        <TaskModal isOpen={isModalOpen}>
+                            <TaskForm addTask={addTask} onClose={closeModal}/>
+                        </TaskModal>
+                        {/* <TaskForm addTask={addTask}/> */}
                     </div>
                 </div>
             </div>
