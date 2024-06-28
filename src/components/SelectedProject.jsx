@@ -12,7 +12,6 @@ export default function SelectedProject({ project, onBackBtn }) {
         return savedTasks ? JSON.parse(savedTasks) : []
     })
     const [isModalOpen, setIsModalOpen] = useState(false);
-    console.log(project)
     useEffect(() => {
         localStorage.setItem(`tasks-${project.title}`, JSON.stringify(tasks));
     }, [tasks, project.title]);
@@ -22,6 +21,16 @@ export default function SelectedProject({ project, onBackBtn }) {
         setIsModalOpen(false);
     }
 
+    const statusChange = (taskId, newStatus) => {
+        const updatedTasks = tasks.map(task => {
+            if(task.id === taskId) {
+                return {...task, status: newStatus}
+            }
+            return task;
+        })
+        setTasks(updatedTasks);
+    }
+
     const openModal = () => {
         setIsModalOpen(true);
     }
@@ -29,8 +38,6 @@ export default function SelectedProject({ project, onBackBtn }) {
     const closeModal = () => {
         setIsModalOpen(false);
     }
-
-    console.log(tasks)
 
     return (
         <>
@@ -54,15 +61,15 @@ export default function SelectedProject({ project, onBackBtn }) {
                         <div className={classes['lists-container']}>
                             <div className={classes['todo-list']}>
                                 <h3>To-Do</h3>
-                                <TasksList tasks={tasks} status='To-Do' />
+                                <TasksList tasks={tasks} status='To-Do' statusChange={statusChange} />
                             </div>
                             <div className={classes['inprogress-list']}>
                                 <h3>In-Progress</h3>
-                                <TasksList tasks={tasks} status='In-Progress' />
+                                <TasksList tasks={tasks} status='In-Progress' statusChange={statusChange} />
                             </div>
                             <div className={classes['done-list']}>
                                 <h3>Done</h3>
-                                <TasksList tasks={tasks} status='Done' />
+                                <TasksList tasks={tasks} status='Done' statusChange={statusChange} />
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import classes from '../css/TaskForm.module.css'
 
 export default function TaskForm( { addTask, onClose } ) {
     const [task, setTask] = useState({
+        id: 0,
         name: '',
         description: '',
         priority: 'Low',
@@ -20,8 +21,10 @@ export default function TaskForm( { addTask, onClose } ) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(task.description.length <= 200) {
-            addTask(task);
+            const newTask = { ...task, id: Date.now()}
+            addTask(newTask);
             setTask({
+                id: task.id + 1,
                 name: '',
                 description: '',
                 priority: 'Low',
