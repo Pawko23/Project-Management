@@ -31,6 +31,11 @@ export default function SelectedProject({ project, onBackBtn }) {
         setTasks(updatedTasks);
     }
 
+    const taskDelete = (taskId) => {
+        const updatedTasks = tasks.filter(task => task.id !== taskId)
+        setTasks(updatedTasks)
+    }
+
     const openModal = () => {
         setIsModalOpen(true);
     }
@@ -61,15 +66,15 @@ export default function SelectedProject({ project, onBackBtn }) {
                         <div className={classes['lists-container']}>
                             <div className={classes['todo-list']}>
                                 <h3>To-Do</h3>
-                                <TasksList tasks={tasks} status='To-Do' statusChange={statusChange} />
+                                <TasksList tasks={tasks} status='To-Do' statusChange={statusChange} onDelete={taskDelete} />
                             </div>
                             <div className={classes['inprogress-list']}>
                                 <h3>In-Progress</h3>
-                                <TasksList tasks={tasks} status='In-Progress' statusChange={statusChange} />
+                                <TasksList tasks={tasks} status='In-Progress' statusChange={statusChange} onDelete={taskDelete}/>
                             </div>
                             <div className={classes['done-list']}>
                                 <h3>Done</h3>
-                                <TasksList tasks={tasks} status='Done' statusChange={statusChange} />
+                                <TasksList tasks={tasks} status='Done' statusChange={statusChange} onDelete={taskDelete}/>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import classes from '../css/Task.module.css'
 import { useState } from 'react';
 
 
-export default function Task( {task, onStatusChange} ) {
+export default function Task( {task, onStatusChange, onDelete} ) {
     const { id, title, status } = task;
     const handleChangeStatus = (newStatus) => {
         onStatusChange(id, newStatus);
@@ -22,6 +22,7 @@ export default function Task( {task, onStatusChange} ) {
                 {toDo && (<><button onClick={() => handleChangeStatus('In-Progress')}>In-Progress</button><button onClick={() => handleChangeStatus('Done')}>Done</button></>)}
                 {inProgress && (<><button onClick={() => handleChangeStatus('To-Do')}>To-Do</button><button onClick={() => handleChangeStatus('Done')}>Done</button></>)}
                 {done && (<><button onClick={() => handleChangeStatus('To-Do')}>To-Do</button><button onClick={() => handleChangeStatus('In-Progress')}>In-Progress</button></>)}
+                <button onClick={() => onDelete(task.id)}>Delete</button>
             </div>
         </div>
     );

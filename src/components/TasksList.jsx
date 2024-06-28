@@ -1,7 +1,7 @@
 import Task from "./Task";
 import classes from '../css/TasksList.module.css'
 
-export default function TasksList( { tasks, status, statusChange } ) {
+export default function TasksList( { tasks, status, statusChange, onDelete } ) {
     
     const handleStatusChange = (taskId, newStatus) => {
         statusChange(taskId, newStatus);
@@ -12,7 +12,7 @@ export default function TasksList( { tasks, status, statusChange } ) {
             {tasks
             .filter((task) => task.status === status)
             .map((task) => (
-                <li key={task.id}><Task task={task} onStatusChange={handleStatusChange} /></li>
+                <li key={task.id}><Task task={task} onStatusChange={handleStatusChange} onDelete={onDelete}/></li>
             ))}
         </ul>
     );
