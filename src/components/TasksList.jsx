@@ -1,8 +1,9 @@
 import Task from "./Task";
+import classes from '../css/TasksList.module.css'
 
 export default function TasksList( { tasks, status } ) {
     return(
-        <ul>
+        <ul className={classes['tasks-list']}>
             {tasks
             .filter((task) => task.status === status)
             .map((task) => (
