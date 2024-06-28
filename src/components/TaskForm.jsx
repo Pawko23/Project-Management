@@ -27,7 +27,6 @@ export default function TaskForm( { addTask, onClose } ) {
                 priority: 'Low',
                 status: 'To-Do'
             })
-            console.log(task)
         } else {
             alert('Description exceeds the maximum length of 200 characters.')
         }
@@ -68,7 +67,7 @@ export default function TaskForm( { addTask, onClose } ) {
                     <option value="High">High</option>
                 </select>
             </div>
-            <button type="submit">Add Task</button>
+            <button type="submit">Add</button>
             <button onClick={onClose}>Close</button>
         </form>
     );
