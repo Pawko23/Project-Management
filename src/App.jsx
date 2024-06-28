@@ -33,11 +33,6 @@ function App() {
     return Object.values(project).every(value => value.trim() !== '');
   };
 
-  //   useEffect(() => {
-  //     console.log(projects);
-  //     console.log(projects.length, " ", projectsExist)
-  // }, [projects]);
-
   return (
     <>
       <main>

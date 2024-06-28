@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from '../css/SelectedProject.module.css'
 import BackButton from './BackButton';
 import TaskForm from './TaskForm';
@@ -7,9 +7,15 @@ import TasksList from './TasksList';
 
 export default function SelectedProject({ project, onBackBtn }) {
 
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(() => {
+        const savedTasks = localStorage.getItem(`tasks-${project.title}`)
+        return savedTasks ? JSON.parse(savedTasks) : []
+    })
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const existingTasks = tasks.length > 0;
+    console.log(project)
+    useEffect(() => {
+        localStorage.setItem(`tasks-${project.title}`, JSON.stringify(tasks));
+    }, [tasks, project.title]);
 
     const addTask = (task) => {
         setTasks([...tasks, task])

@@ -1,10 +1,6 @@
 import classes from '../css/Navbar.module.css'
 
 export default function Navbar( { projects, projectsExist, onProjectSelect } ) {
-    
-    console.log(projectsExist)
-    console.log(projects)
-    
     return (
         <>
             <nav className={classes.navbar}>
