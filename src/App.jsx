@@ -37,7 +37,7 @@ function App() {
     <>
       <main>
         <section className='navbar-container'>
-          <Navbar projects={projects} projectsExist={projectsExist} onProjectSelect={handleProjectSelect} />
+          <Navbar projects={projects} projectsExist={projectsExist} onProjectSelect={handleProjectSelect} selectedProject={selectedProject}/>
         </section>
         <section className='home-container'>
           {isCreatingProject ? (

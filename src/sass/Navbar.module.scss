@@ -21,7 +21,20 @@
     }
 
     li {
+        text-align: center;
         margin: 5px auto;
         color: #fff;
+        border-radius: 4px;
+        width: 200px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #ccc;
+    }
+
+    li:hover {
+        background-color: #ccc;
     }
 }
